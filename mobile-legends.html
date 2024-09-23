@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Legends - Doel's Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="img/logo.jpeg" alt="Logo Toko" width="100">
+        </div>
+
+        <div class="instructions">
+            <p>Tata cara pembelian:</p>
+            <ol>
+                <li>Masukkan User ID dan Server ID anda</li>
+                <li>Pilih item yang diinginkan</li>
+                <li>Lakukan pembayaran yang akan terhubung ke admin</li>
+            </ol>
+        </div>
+
+        <div class="input-group">
+            <label for="user-id">Masukkan User ID</label>
+            <input type="text" id="user-id" placeholder="User ID">
+        </div>
+
+        <div class="input-group">
+            <label for="server-id">Masukkan Server ID</label>
+            <input type="text" id="server-id" placeholder="Server ID">
+        </div>
+
+        <h3>Pilih Diamond Biasa</h3>
+        <div class="packages" id="diamond-list">
+            <!-- Daftar diamond Mobile Legends -->
+        </div>
+
+        <h3>Weekly Diamond Pass (WDP)</h3>
+        <div class="packages" id="wdp-list">
+            <!-- Daftar WDP Mobile Legends -->
+        </div>
+
+        <button class="buy-now" onclick="purchaseMobileLegends()">Beli Sekarang</button>
+    </div>
+
+    <script>
+        const diamondList = [
+            { name: '5 diamonds', price: 1500 },
+            { name: '10 diamonds', price: 2925 },
+            { name: '12 diamonds', price: 3500 },
+            { name: '14 diamonds', price: 3900 },
+            { name: '18 diamonds', price: 4870 },
+            { name: '19 diamonds', price: 5500 },
+            { name: '28 diamonds', price: 7800 },
+            { name: '36 diamonds', price: 9700 },
+            { name: '44 diamonds', price: 11700 },
+            { name: '54 diamonds', price: 14620 },
+            { name: '59 diamonds', price: 15600 },
+            { name: '71 diamonds', price: 19000 },
+            { name: '74 diamonds', price: 19500 },
+            { name: '85 diamonds', price: 22420 },
+            { name: '88 diamonds', price: 23400 },
+            { name: '110 diamonds', price: 29240 },
+            { name: '113 diamonds', price: 30200 },
+            { name: '128 diamonds', price: 34120 },
+            { name: '148 diamonds', price: 39000 },
+            { name: '170 diamonds', price: 44800 },
+            { name: '184 diamonds', price: 48750 },
+            { name: '222 diamonds', price: 58400 },
+            { name: '240 diamonds', price: 63375 },
+            { name: '258 diamonds', price: 68200 },
+            { name: '277 diamonds', price: 72350 },
+            { name: '284 diamonds', price: 75005 },
+            { name: '296 diamonds', price: 78000 },
+            { name: '370 diamonds', price: 97500 },
+            { name: '408 diamonds', price: 107250 },
+            { name: '568 diamonds', price: 146000 },
+            { name: '642 diamonds', price: 165700 },
+            { name: '716 diamonds', price: 204500 }
+        ];
+
+        const wdpList = [
+            { name: 'WDP 1', price: 27500 },
+            { name: 'WDP 2', price: 55400 },
+            { name: 'WDP 3', price: 82900 },
+            { name: 'WDP 4', price: 110400 },
+            { name: 'WDP 5', price: 137900 }
+        ];
+
+        let selectedPackage = '';
+
+        function generatePackageList(containerId, list) {
+            const container = document.getElementById(containerId);
+            list.forEach(item => {
+                const packageDiv = document.createElement('div');
+                packageDiv.className = 'package';
+                packageDiv.innerHTML = `${item.name} - Rp${item.price.toLocaleString()}`;
+                packageDiv.onclick = function () {
+                    selectPackage(item.name, item.price, this);
+                };
+                container.appendChild(packageDiv);
+            });
+        }
+
+        function selectPackage(packageName, price, element) {
+            const packages = document.querySelectorAll('.package');
+            packages.forEach(pkg => pkg.style.backgroundColor = '');
+            element.style.backgroundColor = 'green'; // Indikator pilihan
+            selectedPackage = `${packageName} (Rp${price.toLocaleString()})`;
+        }
+
+        function purchaseMobileLegends() {
+            const userId = document.getElementById('user-id').value;
+            const serverId = document.getElementById('server-id').value;
+            if (userId && serverId && selectedPackage) {
+                const message = `Permisi, saya memesan item Mobile Legends dengan rincian;\nUser ID: ${userId}\nServer ID: ${serverId}\nItem: ${selectedPackage}`;
+                const waUrl = `https://wa.me/6285811440699?text=${encodeURIComponent(message)}`;
+                window.open(waUrl, '_blank'); // Membuka WhatsApp dengan pesan
+            } else {
+                alert('Mohon lengkapi semua data.');
+            }
+        }
+
+        // Generate Diamond Biasa dan WDP
+        generatePackageList('diamond-list', diamondList);
+        generatePackageList('wdp-list', wdpList);
+    </script>
+</body>
+</html>

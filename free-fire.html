@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire - Doel's Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="logo">
+            <img src="img/logo.jpeg" alt="Logo Toko" width="100">
+        </div>
+
+        <div class="instructions">
+            <p>Tata cara pembelian:</p>
+            <ol>
+                <li>Masukkan User ID anda</li>
+                <li>Pilih item yang diinginkan</li>
+                <li>Lakukan pembayaran yang akan terhubung ke admin</li>
+            </ol>
+        </div>
+
+        <div class="input-group">
+            <label for="user-id">Masukkan User ID</label>
+            <input type="text" id="user-id" placeholder="User ID">
+        </div>
+
+        <h3>Diamond Biasa</h3>
+        <div class="packages" id="diamond-list">
+            <!-- Daftar diamond Free Fire -->
+        </div>
+
+        <h3>Pilihan lainnya</h3>
+        <div class="packages" id="other-list">
+            <!-- Daftar lain-lain Free Fire -->
+        </div>
+
+        <button class="buy-now" onclick="purchaseFreeFire()">Beli Sekarang</button>
+    </div>
+
+    <script>
+        const diamondList = [
+            { name: '20 diamonds', price: 3500 },
+            { name: '50 diamonds', price: 7000 },
+            { name: '70 diamonds', price: 9625 },
+            { name: '100 diamonds', price: 14000 },
+            { name: '140 diamonds', price: 19250 },
+            { name: '150 diamonds', price: 21000 },
+            { name: '210 diamonds', price: 28875 },
+            { name: '280 diamonds', price: 38750 },
+            { name: '355 diamonds', price: 48125 },
+            { name: '425 diamonds', price: 57750 },
+            { name: '496 diamonds', price: 67375 },
+            { name: '500 diamonds', price: 68250 },
+            { name: '720 diamonds', price: 96250 },
+            { name: '860 diamonds', price: 115500 },
+            { name: '1000 diamonds', price: 134750 },
+            { name: '1075 diamonds', price: 145250 },
+            { name: '1440 diamonds', price: 192500 },
+            { name: '1450 diamonds', price: 194250 },
+            { name: '2160 diamonds', price: 288750 },
+            { name: '2180 diamonds', price: 292250 }
+        ];
+
+        const otherList = [
+            { name: 'Level Up Pass', price: 14575 },
+            { name: 'BP Card', price: 43650 },
+            { name: 'Member Mingguan', price: 29175 },
+            { name: 'Member Bulanan', price: 116000 }
+        ];
+
+        let selectedPackage = '';
+
+        function generatePackageList(containerId, list) {
+            const container = document.getElementById(containerId);
+            list.forEach(item => {
+                const packageDiv = document.createElement('div');
+                packageDiv.className = 'package';
+                packageDiv.innerHTML = `${item.name} - Rp${item.price.toLocaleString()}`;
+                packageDiv.onclick = function () {
+                    selectPackage(item.name, item.price, this);
+                };
+                container.appendChild(packageDiv);
+            });
+        }
+
+        function selectPackage(packageName, price, element) {
+            const packages = document.querySelectorAll('.package');
+            packages.forEach(pkg => pkg.style.backgroundColor = '');
+            element.style.backgroundColor = 'green'; // Indikator pilihan
+            selectedPackage = `${packageName} (Rp${price.toLocaleString()})`;
+        }
+
+        function purchaseFreeFire() {
+            const userId = document.getElementById('user-id').value;
+            if (userId && selectedPackage) {
+                const message = `Permisi, saya membeli item Free Fire dengan rincian;\nUser ID: ${userId}\nItem: ${selectedPackage}`;
+                const waUrl = `https://wa.me/6285811440699?text=${encodeURIComponent(message)}`;
+                window.open(waUrl, '_blank'); // Membuka WhatsApp dengan pesan
+            } else {
+                alert('Mohon lengkapi semua data.');
+            }
+        }
+
+        // Generate Diamond Biasa dan Pilihan Lainnya
+        generatePackageList('diamond-list', diamondList);
+        generatePackageList('other-list', otherList);
+    </script>
+</body>
+</html>

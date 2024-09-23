@@ -1,0 +1,226 @@
+/* Untuk kotak Mobile Legends */
+#mobile-legends-btn {
+    background-image: url('../img/ml.jpeg');
+    background-size: cover;   /* Gambar sesuai ukuran kotak */
+    background-position: center;  /* Fokus pada tengah gambar */
+    background-repeat: no-repeat; /* Jangan ulangi gambar */
+    margin-top: 30px; /* Jarak dari tombol di atasnya */
+}
+
+/* Untuk kotak Free Fire */
+#free-fire-btn {
+    background-image: url('../img/ff.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 30px; /* Jarak dari tombol di atasnya */
+}
+
+/* Gaya umum untuk game-button */
+.game-button {
+    display: inline-block;
+    padding: 20px;
+    margin: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
+    background-color: #3d28a7; /* Warna default untuk tombol tanpa background-image */
+}
+
+.package {
+    padding: 10px; /* Memberikan ruang agar teks tidak mepet ke tepi */
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/dm.jpeg'); /* Transparansi di atas gambar */
+    background-size: cover; /* Agar gambar memenuhi seluruh kotak */
+    background-position: center; /* Memastikan gambar dipusatkan */
+    margin: 8px;
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 0.9em;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    border: 1px solid black;
+    transition: background-color 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Agar teks berada di tengah secara vertikal */
+    align-items: center; /* Agar teks berada di tengah secara horizontal */
+    word-wrap: break-word;
+    overflow: hidden;
+    color: white; /* Warna teks putih agar terlihat di atas gambar */
+    position: relative; /* Untuk menempatkan ceklis dengan pseudo-class */
+}
+
+/* Saat elemen di-hover, ubah background menjadi merah */
+.package:hover {
+    background: red; /* Mengubah background menjadi merah saat dihover */
+}
+
+/* Tambahkan ceklis saat elemen dihover */
+.package:hover::after {
+    content: '✔'; /* Simbol ceklis */
+    color: white; /* Warna ceklis */
+    font-size: 1.2em; /* Ukuran ceklis */
+    position: absolute;
+    top: 5px; /* Letakkan ceklis di pojok atas */
+    right: 5px; /* Letakkan ceklis di pojok kanan */
+}
+
+.package:hover {
+    background-color: #47e6f4;
+}
+
+.package strong {
+    display: block; 
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+/* Gaya untuk buy-now button */
+.buy-now {
+    padding: 15px 30px;
+    background-color: #ef1e1e;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buy-now:hover {
+    background-color: #138496;
+}
+
+/* Pengaturan body dan container */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #54cdeb;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/logo.jpeg'); /* Gambar dengan transparansi */
+    background-size: cover; /* Mengisi seluruh kotak */
+    background-position: center; /* Memastikan gambar dipusatkan */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: white; /* Mengubah warna teks menjadi putih untuk kontras */
+}
+
+
+/* Pengaturan logo */
+.logo img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1px;
+    width: 5cm;
+    height: 5cm;
+    background-image: url('../img/logo.jpeg');
+}
+
+/* Pengaturan header */
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+/* Pengaturan contact section */
+.contact {
+    margin-bottom: 40px;
+}
+
+.contact h3 {
+    font-size: 1.5em;
+}
+
+.contact-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-image: url('../img/wa.png');
+    background-size: contain; /* Gambar akan sepenuhnya muat dalam elemen */
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100px; /* Tentukan lebar elemen */
+    height: 50px; /* Tentukan tinggi elemen */
+}
+
+
+
+/* Pengaturan untuk judul dan input */
+h3 {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.instructions {
+    margin-bottom: 20px;
+}
+
+ol {
+    text-align: left;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    font-size: 1em;
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Pengaturan untuk game selection */
+.game-selection {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Pengaturan packages */
+.packages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Pengaturan untuk tombol pemilik toko */
+.owner-button {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
